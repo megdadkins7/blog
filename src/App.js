@@ -1,25 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+//components
+import Home from './components/Home'
+import Post from './components/Post'
+
+//styles
+import GlobalStyles from './styles/GlobalStyles'
+
+const StyledNav = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 0 5px 5px;
+  width: 100%; 
+  background: linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(255,255,255,0) 100%);
+  .Nav {
+    margin: 0 5px;
+    padding-right: 10px;
+    background-color: transparent;
+    color: #ACACAC;
+    font-weight: 500;
+    font-size: 1.7rem;
+  }
+  .Nav:hover {
+    color: #fff;
+  }
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GlobalStyles />
+      <div className='Content'>
+      <StyledNav>
+        <nav>
+          <Link className='Nav' to='/'>Home</Link>
+        </nav>
+      </StyledNav>
+      <Switch>
+        <Route path="/post/:title" children={<Post />} />
+        <Route path="/" children={<Home />} />
+      </Switch>
+      </div>
+    </Router>
   );
 }
 
