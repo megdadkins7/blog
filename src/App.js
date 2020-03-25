@@ -9,7 +9,7 @@ import {
 
 //components
 import Home from './components/Home'
-import Post from './components/Post'
+import PostBuild from './components/PostBuild'
 
 //styles
 import GlobalStyles from './styles/GlobalStyles'
@@ -45,7 +45,7 @@ function App() {
         </nav>
       </StyledNav>
       <Switch>
-        <Route path="/post/:title" children={<Post />} />
+        <Route path="/post/:title" children={<PostBuild />} />
         <Route path="/" children={<Home />} />
       </Switch>
       </div>
